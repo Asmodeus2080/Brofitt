@@ -90,7 +90,7 @@ class UserRepository extends CrudRepository {
                     gymId : data.gymId,
                     registerationNumber : data.registerationNumber,
                     role : 'user'
-                });
+                }).select('name _id registerationNumber');
                 return member;
             } catch (error) {
                 console.log(error);
