@@ -48,11 +48,21 @@ async function getDietChartByGymId(id) {
     }
 }
 
+async function getDietChartByUserId(id) {
+    try {
+        const dietChart = await dietChartRepository.getDietChartByUserId(id);
+        return dietChart;
+    } catch (error) {
+        throw new AppError('Something went wrong while fetching the dietChart', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 module.exports = {
     createDietChart,
     updateDietChart,
     deleteDietChart,
     getDietChartByGymId,
+    getDietChartByUserId,
 }
 
 

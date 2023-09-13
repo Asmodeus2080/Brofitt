@@ -47,9 +47,21 @@ async function getAllDietChartForGym(req, res) {
     }
 }
 
+async function getDietChartByUserId(req, res) {
+    try {
+        const dietChart = await DietChartService.getDietChartByUserId(req.params.id);
+        successResponse.data = dietChart;
+        return res.status(StatusCodes.OK).json(successResponse);
+    } catch (error) {
+        errorResponse = error;
+        return res.status(error.statusCode).json(errorResponse); 
+    }
+}
+
 module.exports = {
     createDietChart,
     updateDietChart,
     deleteDietChart,
-    getAllDietChartForGym
+    getAllDietChartForGym,
+    getDietChartByUserId
 }

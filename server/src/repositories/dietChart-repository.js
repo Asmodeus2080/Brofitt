@@ -17,6 +17,17 @@ class DietChartRepository extends CrudRepository {
             throw error;
         }
     }
+
+    async getDietChartByUserId(id) {
+        try {
+            const dietCharts = await DietChart.findOne({
+                userId : id,
+            });
+            return dietCharts;
+        } catch (error) {
+            throw error;    
+        }
+    }
 }
 
 module.exports = DietChartRepository;
